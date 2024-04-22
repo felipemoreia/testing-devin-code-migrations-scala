@@ -21,7 +21,9 @@ lazy val utils = (project in file("subdomains/utils"))
   .settings(
     name := "Utils",
     libraryDependencies ++= Seq(
-      "org.scalatest" %% "scalatest" % "3.2.9" % Test
+      "org.scalatest" %% "scalatest" % "3.2.9" % Test,
+      "org.apache.spark" %% "spark-core" % "3.5.1" % Provided,
+      "org.apache.spark" %% "spark-sql" % "3.5.1" % Provided
     )
   )
   .dependsOn(commonClasses)
