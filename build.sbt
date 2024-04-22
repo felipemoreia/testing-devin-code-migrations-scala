@@ -43,7 +43,7 @@ lazy val subdomain1to4 = (project in file("subdomains/1to4"))
 
 lazy val root = (project in file("."))
   .aggregate(commonClasses, domainA, subdomain1to4)
-  .dependsOn(commonClasses)
+  .dependsOn(commonClasses, subdomain1to4)
   .settings(
     name := "Testing Devin Code Migrations Scala",
     libraryDependencies ++= Seq(
@@ -51,5 +51,6 @@ lazy val root = (project in file("."))
       "org.apache.spark" %% "spark-core" % "3.5.1" % Provided,
       "org.apache.spark" %% "spark-sql" % "3.5.1" % Provided,
       "org.scalameta" %% "munit" % "0.7.29" % Test
-    )
+    ),
+    scalaSource in Test := baseDirectory.value / "src" / "test" / "scala"
   )
