@@ -3,10 +3,10 @@ import subdomains.domain1to4.{SparkOpInstance2, SparkOpInstance3, SparkOpInstanc
 
 object DAG {
   val ops: Set[SubdomainOp] = Set(
-    SparkOpInstance2,
-    SparkOpInstance3,
+    new SparkOpInstance2(),
+    new SparkOpInstance3(),
     new SparkOpInstance4(),
-    SparkOpInstance5,
+    new SparkOpInstance5(),
     new SparkOpInstance6()
     // Note: SparkOpInstance7 to SparkOpInstance20 need to be defined and imported if they exist
   )
