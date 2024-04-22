@@ -14,7 +14,8 @@ lazy val commonClasses = (project in file("platform/common-classes"))
       "org.scalatest" %% "scalatest" % "3.2.9" % Test,
       "org.apache.spark" %% "spark-core" % "3.5.1" % Provided,
       "org.apache.spark" %% "spark-sql" % "3.5.1" % Provided
-    )
+    ),
+    Test / classLoaderLayeringStrategy := ClassLoaderLayeringStrategy.Flat
   )
 
 lazy val domainA = (project in file("subdomains/domain-A"))
@@ -24,7 +25,8 @@ lazy val domainA = (project in file("subdomains/domain-A"))
       "org.scalatest" %% "scalatest" % "3.2.9" % Test,
       "org.apache.spark" %% "spark-core" % "3.5.1" % Provided,
       "org.apache.spark" %% "spark-sql" % "3.5.1" % Provided
-    )
+    ),
+    Test / classLoaderLayeringStrategy := ClassLoaderLayeringStrategy.Flat
   )
   .dependsOn(commonClasses)
 
@@ -36,8 +38,8 @@ lazy val subdomain1to4 = (project in file("subdomains/1to4"))
       "org.apache.spark" %% "spark-core" % "3.5.1" % Provided,
       "org.apache.spark" %% "spark-sql" % "3.5.1" % Provided
     ),
-    scalaSource in Compile := baseDirectory.value / "src" / "main" / "scala",
-    scalaSource in Test := baseDirectory.value / "src" / "test" / "scala",
+    Compile / scalaSource := baseDirectory.value / "src" / "main" / "scala",
+    Test / scalaSource := baseDirectory.value / "src" / "test" / "scala",
     Test / classLoaderLayeringStrategy := ClassLoaderLayeringStrategy.Flat
   )
   .dependsOn(commonClasses)
@@ -53,5 +55,6 @@ lazy val root = (project in file("."))
       "org.apache.spark" %% "spark-sql" % "3.5.1" % Provided,
       "org.scalameta" %% "munit" % "0.7.29" % Test
     ),
-    scalaSource in Test := baseDirectory.value / "src" / "test" / "scala"
+    Test / scalaSource := baseDirectory.value / "src" / "test" / "scala",
+    Test / classLoaderLayeringStrategy := ClassLoaderLayeringStrategy.Flat
   )
