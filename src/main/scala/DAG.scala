@@ -1,26 +1,12 @@
-import subdomains.domainA.{SparkOpInstance1, SparkOpInstance2, SparkOpInstance3, SparkOpInstance4, SparkOpInstance5, SparkOpInstance6, SparkOpInstance7, SparkOpInstance8, SparkOpInstance9, SparkOpInstance10, SparkOpInstance11, SparkOpInstance12, SparkOpInstance13, SparkOpInstance14, SparkOpInstance15, SparkOpInstance16, SparkOpInstance17, SparkOpInstance18, SparkOpInstance19, SparkOpInstance20}
+import subdomains.domainA.{SparkOpInstance1, SparkOpInstance2, SparkOpInstance3, SparkOpInstance4, SparkOpInstance5}
 
 object DAG {
-  val ops: Set[SparkOp] = Set(
+  val ops: Set[SubdomainOp] = Set(
     SparkOpInstance1,
     SparkOpInstance2,
     SparkOpInstance3,
     SparkOpInstance4,
-    SparkOpInstance5,
-    SparkOpInstance6,
-    SparkOpInstance7,
-    SparkOpInstance8,
-    SparkOpInstance9,
-    SparkOpInstance10,
-    SparkOpInstance11,
-    SparkOpInstance12,
-    SparkOpInstance13,
-    SparkOpInstance14,
-    SparkOpInstance15,
-    SparkOpInstance16,
-    SparkOpInstance17,
-    SparkOpInstance18,
-    SparkOpInstance19,
-    SparkOpInstance20
+    SparkOpInstance5
+    // Note: SparkOpInstance6 to SparkOpInstance20 need to be defined and imported if they exist
   )
 }
