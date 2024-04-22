@@ -1,4 +1,4 @@
-package subdomains.domainA
+package subdomains.domain1to4
 
 import org.apache.spark.sql.SparkSession
 import subdomains.utils.{Metadata, RunConfigurations, SubdomainOp, Input}
