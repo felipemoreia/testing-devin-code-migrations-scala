@@ -1,5 +1,5 @@
 import org.scalatest.funsuite.AnyFunSuite
-import subdomains.domainA.SparkOpInstance1
+import subdomains.domain1to4.SparkOpInstance1
 
 class SparkOpInstance1Test extends AnyFunSuite {
   test("SparkOpInstance1: name should be SparkOpInstance1") {
