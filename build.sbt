@@ -65,9 +65,23 @@ lazy val subdomain1to4 = (project in file("subdomains/1to4"))
   )
   .dependsOn(commonClasses)
 
+lazy val subdomain5to8 = (project in file("subdomains/5to8"))
+  .settings(
+    commonSettings,
+    name := "Subdomain 5to8",
+    libraryDependencies ++= Seq(
+      "org.scalatest" %% "scalatest" % "3.2.9" % Test,
+      "org.apache.spark" %% "spark-core" % "3.5.1" % Provided,
+      "org.apache.spark" %% "spark-sql" % "3.5.1" % Provided
+    ),
+    Compile / scalaSource := baseDirectory.value / "src" / "main" / "scala",
+    Test / scalaSource := baseDirectory.value / "src" / "test" / "scala"
+  )
+  .dependsOn(commonClasses)
+
 lazy val root = (project in file("."))
-  .aggregate(commonClasses, domainA, subdomain1to4)
-  .dependsOn(commonClasses, subdomain1to4)
+  .aggregate(commonClasses, domainA, subdomain1to4, subdomain5to8)
+  .dependsOn(commonClasses, subdomain1to4, subdomain5to8)
   .settings(
     commonSettings,
     name := "Testing Devin Code Migrations Scala",
