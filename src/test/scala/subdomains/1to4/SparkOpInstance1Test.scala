@@ -1,8 +1,9 @@
 import org.scalatest.funsuite.AnyFunSuite
+import org.scalatest.BeforeAndAfterAll
 import subdomains1to4.SparkOpInstance1
 import org.apache.spark.sql.SparkSession
 
-class SparkOpInstance1Test extends AnyFunSuite {
+class SparkOpInstance1Test extends AnyFunSuite with BeforeAndAfterAll {
   val sparkSession: SparkSession = SparkSession.builder().appName("SubdomainOpsTest").master("local").getOrCreate()
 
   test("SparkOpInstance1: name should be SparkOpInstance1") {
