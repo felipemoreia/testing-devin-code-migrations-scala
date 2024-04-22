@@ -1,9 +1,11 @@
 import Dependencies._
 
-ThisBuild / scalaVersion     := "2.12"
+ThisBuild / scalaVersion     := "2.12.15"
 ThisBuild / version          := "0.1.0-SNAPSHOT"
 ThisBuild / organization     := "com.example"
 ThisBuild / organizationName := "example"
+
+resolvers += "Maven Central" at "https://repo1.maven.org/maven2"
 
 lazy val commonClasses = (project in file("platform/common-classes"))
   .settings(
