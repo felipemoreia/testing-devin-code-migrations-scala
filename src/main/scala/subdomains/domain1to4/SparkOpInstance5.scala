@@ -1,12 +1,10 @@
-package legacy
+package subdomains.domain1to4
+
 import org.apache.spark.sql.SparkSession
-
-import platform.common_classes.SparkOp
 import org.apache.spark.sql.DataFrame
-import platform.common_classes.Metadata
-import platform.common_classes.RunConfigurations
+import subdomains.utils.{Metadata, RunConfigurations, SubdomainOp}
 
-object SparkOpInstance5 extends SparkOp {
+object SparkOpInstance5 extends SubdomainOp {
   val randomValue: Int = 2753 // Hardcoded random value
 
   override def name: String = "SparkOpInstance5"
