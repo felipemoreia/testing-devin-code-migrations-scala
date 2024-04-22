@@ -2,13 +2,13 @@ package subdomains.domain1to4
 
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.sql.DataFrame
-import subdomains.utils.{Metadata, RunConfigurations, SubdomainOp}
+import subdomains.utils.{Metadata, RunConfigurations, SubdomainOp, Input}
 
 object SparkOpInstance5 extends SubdomainOp {
   val randomValue: Int = 2753 // Hardcoded random value
 
   override def name: String = "SparkOpInstance5"
-  override def inputs: Set[String] = Set() // Removed reference to SparkOpInstance4
+  override def inputs: Set[Input] = Set() // Corrected type to Set[Input]
   override def query(inputs: Map[String, DataFrame]): DataFrame = {
     // Assuming SparkOpInstance4's output is available in the inputs map
     val sparkOpInstance4Output = inputs.getOrElse("SparkOpInstance4", SparkSession.builder().getOrCreate().emptyDataFrame)
