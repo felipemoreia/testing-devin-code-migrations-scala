@@ -52,7 +52,7 @@ lazy val domain1to4 = (project in file("subdomains/domain1to4"))
 
 lazy val root = (project in file("."))
   .aggregate(commonClasses, domainA, domain1to4, utils)
-  .dependsOn(commonClasses)
+  .dependsOn(commonClasses, domain1to4)
   .settings(
     name := "Testing Devin Code Migrations Scala",
     libraryDependencies ++= Seq(
@@ -60,7 +60,9 @@ lazy val root = (project in file("."))
       "org.apache.spark" %% "spark-core" % "3.5.1" % Provided,
       "org.apache.spark" %% "spark-sql" % "3.5.1" % Provided,
       "org.scalameta" %% "munit" % "0.7.29" % Test
-    )
+    ),
+    // Explicitly include the src/main/scala directory in the compilation path
+    Compile / unmanagedSourceDirectories += baseDirectory.value / "src" / "main" / "scala"
   )
 
 // See https://www.scala-sbt.org/1.x/docs/Using-Sonatype.html for instructions on how to publish to Sonatype.
