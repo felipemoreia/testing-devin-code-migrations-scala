@@ -28,8 +28,19 @@ lazy val domainA = (project in file("subdomains/domain-A"))
   )
   .dependsOn(commonClasses)
 
+lazy val subdomain1to4 = (project in file("subdomains/1to4"))
+  .settings(
+    name := "Subdomain 1to4",
+    libraryDependencies ++= Seq(
+      "org.scalatest" %% "scalatest" % "3.2.9" % Test,
+      "org.apache.spark" %% "spark-core" % "3.5.1" % Provided,
+      "org.apache.spark" %% "spark-sql" % "3.5.1" % Provided
+    )
+  )
+  .dependsOn(commonClasses)
+
 lazy val root = (project in file("."))
-  .aggregate(commonClasses, domainA)
+  .aggregate(commonClasses, domainA, subdomain1to4)
   .dependsOn(commonClasses)
   .settings(
     name := "Testing Devin Code Migrations Scala",
@@ -40,5 +51,3 @@ lazy val root = (project in file("."))
       "org.scalameta" %% "munit" % "0.7.29" % Test
     )
   )
-
-// See https://www.scala-sbt.org/1.x/docs/Using-Sonatype.html for instructions on how to publish to Sonatype.
