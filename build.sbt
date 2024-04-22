@@ -39,7 +39,7 @@ lazy val domainA = (project in file("subdomains/domain-A"))
   )
   .dependsOn(commonClasses)
 
-lazy val domain1to4 = (project in file("subdomains/1to4"))
+lazy val domain1to4 = (project in file("subdomains/domain1to4"))
   .settings(
     name := "Domain 1to4",
     libraryDependencies ++= Seq(
