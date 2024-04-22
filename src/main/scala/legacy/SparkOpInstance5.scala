@@ -10,10 +10,11 @@ object SparkOpInstance5 extends SparkOp {
   val randomValue: Int = 2753 // Hardcoded random value
 
   override def name: String = "SparkOpInstance5"
-  override def inputs: Set[String] = Set(SparkOpInstance4.name) // Reference to SparkOpInstance4 as an input using object name
+  override def inputs: Set[String] = Set() // Removed reference to SparkOpInstance4
   override def query(inputs: Map[String, DataFrame]): DataFrame = {
-    // Using randomValue from SparkOpInstance4 as instructed
-    val _ = SparkOpInstance4.randomValue
+    // Assuming SparkOpInstance4's output is available in the inputs map
+    val sparkOpInstance4Output = inputs.getOrElse("SparkOpInstance4", SparkSession.builder().getOrCreate().emptyDataFrame)
+    // Use sparkOpInstance4Output as needed for the query
     SparkSession.builder().getOrCreate().emptyDataFrame
   }
   override def metadata: Metadata = {
