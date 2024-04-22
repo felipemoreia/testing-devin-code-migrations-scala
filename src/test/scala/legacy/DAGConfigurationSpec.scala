@@ -1,14 +1,13 @@
 import munit.FunSuite
-import legacy._
-import platform.common_classes.SparkOp
-import DAG.ops
+import subdomains.utils._
+import subdomains.domain1to4.{SparkOpInstance2, SparkOpInstance3, SparkOpInstance4, SparkOpInstance5, SparkOpInstance6}
 
 class DAGConfigurationSpec extends FunSuite {
   test("DAG should have no cycles") {
     val visited = scala.collection.mutable.Set[String]()
     val recStack = scala.collection.mutable.Set[String]()
 
-    def isCyclic(op: SparkOp): Boolean = {
+    def isCyclic(op: SubdomainOp): Boolean = {
       println(s"Checking for cycles at: ${op.name}")
       if (recStack.contains(op.name)) return true
       if (visited.contains(op.name)) return false
@@ -17,7 +16,7 @@ class DAGConfigurationSpec extends FunSuite {
       recStack.add(op.name)
 
       val result = op.inputs.exists { input =>
-        ops.exists(_.name == input) && isCyclic(ops.find(_.name == input).get)
+        ops.exists(_.name == input.name) && isCyclic(ops.find(_.name == input.name).get)
       }
       recStack.remove(op.name)
       result
@@ -27,10 +26,10 @@ class DAGConfigurationSpec extends FunSuite {
     assert(!hasCycles, "The DAG contains cycles")
   }
 
-  test("SparkOp inputs must exist in the DAG") {
+  test("SubdomainOp inputs must exist in the DAG") {
     val opNames = ops.map(_.name).toSet
-    val inputsExist = ops.forall(op => op.inputs.forall(inputName => opNames.contains(inputName)))
+    val inputsExist = ops.forall(op => op.inputs.forall(input => opNames.contains(input.name)))
 
-    assert(inputsExist, "All SparkOp inputs must exist in the DAG")
+    assert(inputsExist, "All SubdomainOp inputs must exist in the DAG")
   }
 }
