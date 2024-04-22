@@ -3,8 +3,15 @@ import subdomains.utils._
 import subdomains.domain1to4.{SparkOpInstance2, SparkOpInstance3, SparkOpInstance4, SparkOpInstance5, SparkOpInstance6}
 
 class DAGConfigurationSpec extends FunSuite {
+  // Instantiate SparkOpInstance objects to ensure they are of type SubdomainOp
+  val op2 = new SparkOpInstance2()
+  val op3 = new SparkOpInstance3()
+  val op4 = new SparkOpInstance4()
+  val op5 = new SparkOpInstance5()
+  val op6 = new SparkOpInstance6()
+
   // Ensure that the ops sequence is typed to Seq[SubdomainOp] to avoid type mismatch
-  val ops: Seq[SubdomainOp] = Seq(SparkOpInstance2, SparkOpInstance3, SparkOpInstance4, SparkOpInstance5, SparkOpInstance6)
+  val ops: Seq[SubdomainOp] = Seq(op2, op3, op4, op5, op6)
 
   test("DAG should have no cycles") {
     val visited = scala.collection.mutable.Set[String]()
