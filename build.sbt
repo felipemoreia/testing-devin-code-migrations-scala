@@ -35,7 +35,9 @@ lazy val subdomain1to4 = (project in file("subdomains/1to4"))
       "org.scalatest" %% "scalatest" % "3.2.9" % Test,
       "org.apache.spark" %% "spark-core" % "3.5.1" % Provided,
       "org.apache.spark" %% "spark-sql" % "3.5.1" % Provided
-    )
+    ),
+    scalaSource in Compile := baseDirectory.value / "src" / "main" / "scala",
+    scalaSource in Test := baseDirectory.value / "src" / "test" / "scala"
   )
   .dependsOn(commonClasses)
 
