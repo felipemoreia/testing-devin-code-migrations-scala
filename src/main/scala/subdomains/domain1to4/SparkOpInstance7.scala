@@ -1,4 +1,4 @@
-package legacy
+package subdomains.domain1to4
 import org.apache.spark.sql.SparkSession
 
 import platform.common_classes.SparkOp
