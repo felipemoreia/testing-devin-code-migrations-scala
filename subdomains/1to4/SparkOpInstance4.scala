@@ -1,5 +1,5 @@
 package subdomains.domainA
-import org.apache.spark.sql.SparkSession
+import org.apache.spark.sql.{SparkSession, DataFrame}
 import subdomains.utils.{Metadata, RunConfigurations, SubdomainOp, Input}
 
 case class SparkOpInstance4() extends SubdomainOp {
